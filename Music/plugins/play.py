@@ -100,12 +100,12 @@ async def play_music(_, message: Message, context: dict):
         if not ytube.check(url):
             return await hell.edit("Invalid YouTube URL.")
         if "playlist" in url:
-            return await hell.edit("Playlist links are not supported yet.")
+            return await hell.edit("ᴘʟᴀʏʟɪsᴛ ʟɪɴᴋs ᴀʀᴇ ɴᴏᴛ sᴜᴘᴘᴏʀᴛᴇᴅ ʏᴇᴛ.")
         try:
-            await hell.edit("Searching ...")
+            await hell.edit("sᴇᴀʀᴄʜɪɴɢ ...")
             result = await ytube.get_data(url, False)
         except Exception as e:
-            return await hell.edit(f"**Error:**\n`{e}`")
+            return await hell.edit(f"**ᴇʀʀᴏʀ:**\n`{e}`")
         context = {
             "chat_id": message.chat.id,
             "user_id": message.from_user.id,
@@ -142,17 +142,17 @@ async def play_music(_, message: Message, context: dict):
 
 
 @hellbot.app.on_message(
-    filters.command(["current", "playing"]) & filters.group & ~Config.BANNED_USERS
+    filters.command(["ᴄᴜʀʀᴇɴᴛʟʏ", "ᴘʟᴀʏɪɴɢ"]) & filters.group & ~Config.BANNED_USERS
 )
 @UserWrapper
 async def playing(_, message: Message):
     chat_id = message.chat.id
     is_active = await db.is_active_vc(chat_id)
     if not is_active:
-        return await message.reply_text("No active voice chat found here.")
+        return await message.reply_text("ɴᴏ ᴀᴄᴛɪᴠᴇ ᴄʜᴀᴛ ғᴏᴜɴᴅ ʜᴇʀᴇ.")
     que = Queue.get_current(chat_id)
     if not que:
-        return await message.reply_text("Nothing is playing here.")
+        return await message.reply_text("ɴᴏᴛʜɪɴɢ ɪs ᴘʟᴀʏɪɴɢ ʜᴇʀᴇ.")
     photo = thumb.generate((359), (297, 302), que["video_id"])
     btns = Buttons.player_markup(chat_id, que["video_id"], hellbot.app.username)
     to_send = TEXTS.PLAYING.format(
@@ -183,14 +183,14 @@ async def playing(_, message: Message):
 )
 @UserWrapper
 async def queued_tracks(_, message: Message):
-    hell = await message.reply_text("Getting Queue...")
+    hell = await message.reply_text("ɢᴇᴛᴛɪɴɢ ǫᴜᴇᴜᴇ...")
     chat_id = message.chat.id
     is_active = await db.is_active_vc(chat_id)
     if not is_active:
-        return await hell.edit_text("No active voice chat found here.")
+        return await hell.edit_text("ɴᴏ ᴀᴄᴛɪᴠᴇ ᴄʜᴀᴛ ғᴏᴜɴᴅ ʜᴇʀᴇ.")
     collection = Queue.get_queue(chat_id)
     if not collection:
-        return await hell.edit_text("Nothing is playing here.")
+        return await hell.edit_text("ɴᴏᴛʜɪɴɢ ɪs ᴘʟᴀʏɪɴɢ ʜᴇʀᴇ.")
     await MakePages.queue_page(hell, collection, 0, 0, True)
 
 
@@ -198,7 +198,7 @@ async def queued_tracks(_, message: Message):
 @AuthWrapper
 async def clean_queue(_, message: Message):
     Queue.clear_queue(message.chat.id)
-    hell = await message.reply_text("**Cleared Queue.**")
+    hell = await message.reply_text("**ᴄʟᴇᴀʀᴇᴅ ǫᴜᴇᴜᴇ.**")
     await asyncio.sleep(10)
     await hell.delete()
 
