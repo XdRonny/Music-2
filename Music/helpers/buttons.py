@@ -48,7 +48,7 @@ class MakeButtons:
         if len(collection) != 1:
             nav_btns = [
                 [
-                    self.ikb("Play Favorites 🖤", callback_data=f"myfavs|play|{user_id}|0|0"),
+                    self.ikb("● ᴘʟᴀʏ ғᴀᴠᴏᴜʀɪᴛᴇs ●", callback_data=f"myfavs|play|{user_id}|0|0"),
                 ],
                 [
                     self.ikb("● ᴘʀᴇᴠɪᴏᴜs ●", callback_data=f"myfavs|prev|{user_id}|{page}|{d}"),
@@ -59,7 +59,7 @@ class MakeButtons:
         else:
             nav_btns = [
                 [
-                    self.ikb("Play Favorites 🖤", callback_data=f"myfavs|play|{user_id}|0|0"),
+                    self.ikb("● ᴘʟᴀʏ ғᴀᴠᴏᴜʀɪᴛᴇs ●", callback_data=f"myfavs|play|{user_id}|0|0"),
                 ],
                 [
                     self.ikb("● ᴄʟᴏsᴇ ●", callback_data=f"myfavs|close|{user_id}|{page}|{d}"),
@@ -137,7 +137,7 @@ class MakeButtons:
                 ],
                 [
                     self.ikb("● ғᴀᴠᴏᴜʀɪᴛᴇ ●", callback_data=f"add_favorite|{video_id}"),
-                    self.ikb("● Controls ●", callback_data=f"controls|{video_id}|{chat_id}"),
+                    self.ikb("● ᴄᴏɴᴛʀᴏʟs ●", callback_data=f"controls|{video_id}|{chat_id}"),
                 ],
                 [
                     self.ikb("● ᴄʟᴏsᴇ ●", callback_data="close"),
@@ -205,7 +205,7 @@ class MakeButtons:
         buttons = [
             [
                 self.ikb(text="● ᴍɪɴᴇ ●", url="https://t.me/Life1GoesOn"),
-                self.ikb(text="● ʀᴇᴘᴏ ●", url="https://t.me/Selling_Hub1"),
+                self.ikb(text="● ʀᴇᴘᴏ ●", url="https://t.me/SuttaBazar"),
             ],
             [
                 self.ikb(text="● ɴᴇᴛᴡᴏʀᴋ ●", url="https://t.me/BotsHub1"),
